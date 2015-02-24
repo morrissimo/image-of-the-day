@@ -71,12 +71,16 @@ if 'RDS_DB_NAME' in os.environ:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': 'iotd',
             'USER': 'iotd',
-            'PASSWORD': 'iotd',
+            'PASSWORD': 'iotd12!',
             'HOST' : 'localhost',
             'PORT' : '5432',
+            'OPTIONS': {
+                'init_command': 'SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',   # MySQL uses REPEATABLE READ by default
+            },
         }
     } 
 
